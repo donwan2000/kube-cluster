@@ -31,4 +31,15 @@ spec:
   values:
     grafana:
       adminPassword: dondon
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+
+        hosts:
+          - grs.donsheehan.cc
+
+            #        tls:
+            #          - secretName: grafana-tls-secret
+            #            hosts:
+            #              - grs.donsheehan.cc
 
