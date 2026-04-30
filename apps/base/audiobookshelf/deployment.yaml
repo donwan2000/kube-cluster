@@ -12,15 +12,16 @@ spec:
       labels:
         app: audiobookshelf
     spec:
-      securityContext:
-        fsGroup: 33 # www-data group ID
-        runAsUser: 33 # www-data user ID
-        runAsGroup: 33 # www-data group ID
+      #      securityContext:
+      #        fsGroup: 33 # www-data group ID
+      #        runAsUser: 33 # www-data user ID
+      #        runAsGroup: 33 # www-data group ID
       containers:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:2.30.0
           ports:
-            - containerPort: 13378:3005
+            - hostPort: 13378
+            - containerPort: 3005
             #          envFrom:
             # - configMapRef:
             #    name: audiobookshelf-configmap
@@ -28,10 +29,10 @@ spec:
             #                name: audiobookshelf-container-env
             #          securityContext:
             #            allowPrivilegeEscalation: false
-          volumeMounts:
-            - name: audiobookshelf-data
-              mountPath: /etc/audiobookshelf/data
-      volumes:
-        - name: audiobookshelf-data
-          persistentVolumeClaim:
-            claimName: audiobookshelf-data-pvc
+            #          volumeMounts:
+            #            - name: audiobookshelf-data
+            #              mountPath: /etc/audiobookshelf/data
+            #      volumes:
+            #        - name: audiobookshelf-data
+            #          persistentVolumeClaim:
+            #            claimName: audiobookshelf-data-pvc
