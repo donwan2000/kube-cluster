@@ -26,12 +26,12 @@ spec:
             #    name: audiobookshelf-configmap
             #            - secretRef:
             #                name: audiobookshelf-container-env
-          securityContext:
-            allowPrivilegeEscalation: false
-          volumeMounts:
-            - name: audiobookshelf-data
-              mountPath: /etc/audiobookshelf/data
-      volumes:
-        - name: audiobookshelf-data
-          persistentVolumeClaim:
-            claimName: audiobookshelf-data-pvc
+            #          securityContext:
+            #            allowPrivilegeEscalation: false
+            #          volumeMounts:
+            #            - name: audiobookshelf-data
+            #              mountPath: /etc/audiobookshelf/data
+            #      volumes:
+            #        - name: audiobookshelf-data
+            #          persistentVolumeClaim:
+            #            claimName: audiobookshelf-data-pvc
