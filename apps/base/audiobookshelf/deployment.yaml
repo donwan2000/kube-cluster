@@ -24,8 +24,8 @@ spec:
           envFrom:
             # - configMapRef:
             #    name: audiobookshelf-configmap
-            - secretRef:
-                name: audiobookshelf-container-env
+            #            - secretRef:
+            #                name: audiobookshelf-container-env
           securityContext:
             allowPrivilegeEscalation: false
           volumeMounts:
