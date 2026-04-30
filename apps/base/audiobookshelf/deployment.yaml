@@ -20,18 +20,18 @@ spec:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:2.30.0
           ports:
-            - containerPort: 3005 
-          envFrom:
+            - containerPort: 13378:3005
+            #          envFrom:
             # - configMapRef:
             #    name: audiobookshelf-configmap
             #            - secretRef:
             #                name: audiobookshelf-container-env
             #          securityContext:
             #            allowPrivilegeEscalation: false
-            #          volumeMounts:
-            #            - name: audiobookshelf-data
-            #              mountPath: /etc/audiobookshelf/data
-            #      volumes:
-            #        - name: audiobookshelf-data
-            #          persistentVolumeClaim:
-            #            claimName: audiobookshelf-data-pvc
+          volumeMounts:
+            - name: audiobookshelf-data
+              mountPath: /etc/audiobookshelf/data
+      volumes:
+        - name: audiobookshelf-data
+          persistentVolumeClaim:
+            claimName: audiobookshelf-data-pvc
