@@ -29,11 +29,22 @@ spec:
             #                name: audiobookshelf-container-env
             #          securityContext:
             #            allowPrivilegeEscalation: false
-            #          volumeMounts:
-            #            - name: audiobookshelf-data
-            #              mountPath: /etc/audiobookshelf/data
-            #      volumes:
-            #        - name: audiobookshelf-data
-            #          persistentVolumeClaim:
-            #            claimName: audiobookshelf-data-pvc
+          volumeMounts:
+            - mountPath: /config
+              name: audiobookshelf-config
+            - mountPath: /metadata
+              name: audiobookshelf-metadata
+            - mountPath: /audiobooks
+              name: audiobookshelf-audiobooks
+      volumes:
+        - name: audiobookshelf-config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-config
+        - name: audiobookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-metadata
+        - name: audiobookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-audiobooks
+ 
       restartpolicy: Always
