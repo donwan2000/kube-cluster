@@ -20,11 +20,10 @@ spec:
         - name: audiobookshelf
           image: ghcr.io/advplyr/audiobookshelf:2.30.0
           ports:
-            - hostPort: 13378
             - containerPort: 3005
-            #          envFrom:
-            # - configMapRef:
-            #    name: audiobookshelf-configmap
+          envFrom:
+          - configMapRef:
+            name: audiobookshelf-configmap
             #            - secretRef:
             #                name: audiobookshelf-container-env
             #          securityContext:
